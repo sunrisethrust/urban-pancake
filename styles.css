@@ -56,8 +56,8 @@ height: 100vh;   /* fallback */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-p {
+h1, p {
   line-height: 1.6;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 2rem auto;
 }
