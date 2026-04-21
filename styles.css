@@ -59,4 +59,5 @@ height: 100vh;   /* fallback */
 p {
   line-height: 1.6;
   max-width: 600px;
+  margin: 0 auto;
 }
