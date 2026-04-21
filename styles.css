@@ -9,9 +9,9 @@ body {
 
 /* App container using dvh */
 .app {
-  height: 100vh;   /* fallback */
-  height: 100dvh;  /* modern mobile-safe viewport */
-  overflow: hidden;
+  //height: 100vh;   /* fallback */
+ // height: 100dvh;  /* modern mobile-safe viewport */
+ // overflow: hidden;
 }
 
 /* Scrollable content */
