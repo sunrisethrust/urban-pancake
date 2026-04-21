@@ -23,16 +23,29 @@ body {
   height: 100%;
   overflow-y: auto;
   padding: 20px;
-  padding-top: var(--top-offset, 80px);
   background: #f5f5f5;
+}
+
+/* On mobile, header goes fixed — placeholder holds its space */
+#header-placeholder {
+  height: 0;
+}
+
+@media (max-width: 767px) {
+  #header-placeholder {
+    height: var(--header-h, 60px);
+  }
+
+  /* Reserve space below fixed header + fixed box */
+  .content {
+    padding-top: var(--top-offset, 80px);
+  }
 }
 
 /* =========================
    HEADER
    ========================= */
 .header {
-  position: fixed;
-  left: 0;
   width: 100%;
   height: 60px;
 
@@ -48,24 +61,28 @@ body {
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.header.hidden {
-  transform: translateY(-100%);
-  opacity: 0;
-  pointer-events: none;
+/* sticky only on mobile */
+@media (max-width: 767px) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .header.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 /* =========================
-   STICKY BOX
+   STICKY BOX — shared base
    ========================= */
 .box {
-  height: 80px;
-  background: black;
-  color: white;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
@@ -84,12 +101,54 @@ body {
   pointer-events: none;
 }
 
-#sticky-placeholder {
+/* Placeholder height driven by JS-set CSS var */
+#sticky-placeholder-desktop,
+#sticky-placeholder-mobile {
   height: 0;
 }
 
-#sticky-placeholder.active {
-  height: 80px;
+#sticky-placeholder-desktop.active,
+#sticky-placeholder-mobile.active {
+  height: var(--box-h, 0px);
+}
+
+/* =========================
+   DESKTOP VARIANT
+   Only visible at >= 768px
+   ========================= */
+.box--desktop {
+  background: #1a1a2e;
+  color: #e0e0ff;
+  padding: 0 32px;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+}
+
+/* hide on mobile */
+@media (max-width: 767px) {
+  .box--desktop {
+    display: none;
+  }
+}
+
+/* =========================
+   MOBILE VARIANT
+   Only visible below 768px
+   ========================= */
+.box--mobile {
+  background: #2d2d2d;
+  color: #fff;
+  padding: 2rem 16px;
+  font-size: 0.85rem;
+  gap: 8px;
+}
+
+/* hide on desktop */
+@media (min-width: 768px) {
+  .box--mobile {
+    display: none;
+  }
 }
 p {
   max-width: 700px;
