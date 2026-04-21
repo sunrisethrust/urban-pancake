@@ -8,13 +8,15 @@
 </head>
 <body>
 
-  <!-- NEW: Header (added, everything else unchanged) -->
-  <div class="header" id="header">
-    🧭 Smart Header
-  </div>
-
   <div class="app">
     <div class="content">
+
+      <!-- Header inside scroll container: scrolls on desktop, fixed on mobile via CSS -->
+      <div class="header" id="header">
+        🧭 Smart Header
+      </div>
+      <!-- Holds space when header goes fixed on mobile -->
+      <div id="header-placeholder"></div>
 
       <h1>Scroll Demo</h1>
 
@@ -49,13 +51,20 @@
       <!-- trigger point -->
       <div id="trigger"></div>
 
-      <!-- placeholder keeps layout space when box goes fixed -->
-      <div id="sticky-placeholder"></div>
-
-      <!-- sticky element -->
-      <div id="sticky" class="box">
-        🚀 I become fixed when you scroll past me
+      <!-- Desktop sticky variant + its placeholder -->
+      <div id="sticky-placeholder-desktop"></div>
+      <div id="sticky-desktop" class="box box--desktop">
+        🖥️ Desktop sticky bar — wide layout
       </div>
+
+      <!-- Mobile sticky variant + its placeholder -->
+      <div id="sticky-placeholder-mobile"></div>
+      <div id="sticky-mobile" class="box box--mobile">
+        📱 Mobile sticky bar
+      </div>
+
+      <!-- hide trigger: box hides after its bottom scrolls past viewport -->
+      <div id="hide-trigger"></div>
 
       <p>
         This content comes immediately after the sticky element. When you scroll
